@@ -1,0 +1,28 @@
+/* ensure avatar thumbnails are uniform size */
+.avatar { 
+	max-height: 80px; 
+	object-fit: cover;
+}
+/* Animations for people on leaderboard add (enter) and remove (leave) */
+.leader.ng-enter,
+.leader.ng-leave {
+	transition: 0.5s ease all;
+	position: relative;
+}
+.leader.ng-enter {
+	opacity: 0;
+	left: -1000px;
+}
+.leader.ng-leave {
+	opacity: 1;
+	left: 0;
+	top: 0;
+}
+.leader.ng-enter.ng-enter-active {
+	opacity: 1;
+	left: 0;
+}
+.leader.ng-leave.ng-leave-active {
+	opacity: 0;
+	top: -1080px;
+}
