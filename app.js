@@ -6,9 +6,9 @@
     	$scope.board = [];
     	$scope.boardData = [];
     	$scope.loading = true;
-    	$scope.cursor = 0;
+    	$scope.cursor = 90;
     	$scope.boardSize = 8;      // number of simultaneous leaders to show
-    	$scope.screenDelay = 5000; // delay between screens
+    	$scope.screenDelay = 1000; // delay between screens
     	$scope.itemDelay = 150;    // delay between adding items to screen
 
     	// Removes all items from display
@@ -20,15 +20,16 @@
     	// Adds items to display one at a time (for animations)
     	$scope.addItem = function() {
     		// add item from total set
-    		$scope.board.push($scope.boardData.results.slice($scope.cursor, $scope.cursor + 1)[0]);
+   			$scope.board.push($scope.boardData.results.slice($scope.cursor, $scope.cursor + 1)[0]);
     		$scope.cursor += 1;
     		// stop adding after boardSize items
-    		if($scope.board.length < $scope.boardSize) {
+    		if($scope.board.length < $scope.boardSize &&
+    			$scope.cursor < $scope.boardData.results.length) {
     			// set up next item to be added
     			$timeout($scope.addItem, $scope.itemDelay);
     		} else {
     			// reset to zero if we've reached the end
-	    		if($scope.cursor > $scope.boardData.results.length) {
+	    		if($scope.cursor >= $scope.boardData.results.length) {
 	    			$scope.cursor = 0;
 	    		}
 	    		// set up delay to clean screen and redraw
