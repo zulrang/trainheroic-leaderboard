@@ -6,9 +6,9 @@
     	$scope.board = [];
     	$scope.boardData = [];
     	$scope.loading = true;
-    	$scope.cursor = 90;
+    	$scope.cursor = 0;
     	$scope.boardSize = 8;      // number of simultaneous leaders to show
-    	$scope.screenDelay = 1000; // delay between screens
+    	$scope.screenDelay = 5000; // delay between screens
     	$scope.itemDelay = 150;    // delay between adding items to screen
 
     	// Removes all items from display
