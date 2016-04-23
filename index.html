@@ -11,12 +11,39 @@
 
     <link rel="stylesheet" href="http://gainz.trainheroic.com/styles/app-578f83c8.css">
 
+	<style>
+	.avatar { 
+		max-height: 80px; 
+		object-fit: cover;
+	}
+	.leader.ng-enter,
+	.leader.ng-leave {
+		transition: 0.5s linear all;
+		position: relative;
+	}
+	.leader.ng-enter {
+		opacity: 0;
+		left: -10px;
+	}
+	.leader.ng-leave {
+		opacity: 1;
+		left: 0;
+	}
+	.leader.ng-enter.ng-enter-active {
+		opacity: 1;
+		left: 0;
+	}
+	.leader.ng-leave.ng-leave-active {
+		opacity: 0;
+		left: -10px;
+	}
+	</style>
 </head>
 <body ng-app='LeaderboardApp' ng-cloak>
 
 <div ui-view>
-	<div layout="column" class='layout-column'>
-		<md-content ui-view='body' ng-controller='leaderboardCtrl' ng-model='board'>
+	<div layout="column" class='layout-column' ng-if='!loading'>
+		<div ui-view='body' ng-controller='leaderboardCtrl' ng-model='board'>
 			<md-card layout='column' layout-align='start' class='workout-logging-header' >
 				<md-content class='session-info'>
 					<div layout="row" layout-align="space-between center" layout-padding="" layout-fill="" class="layout-fill layout-padding layout-align-space-between-center layout-row">
@@ -27,21 +54,24 @@
 					</div>
 				</md-content>
 			</md-card>
-			<md-card layout='column' ng-repeat='result in board.results'>
+			<md-card class='leader' layout='column' ng-repeat='result in board'>
 				<md-card-title>
+					<md-card-title-media>
+						<h1>{{result.tests[0]}}</h1>
+					</md-card-title-media>
 					<md-card-title-text>
 						<span class='md-headline'>{{result.userLastName}}, {{result.userFirstName}}</span>
 					</md-card-title-text>
 					<md-card-title-media>
 						<div class="md-media-sm card-media">
 							<a href='{{result.profileUrl}}'}}>
-							<img src='{{result.profileImg}}'/>
+							<img ng-src='{{result.profileImg}}' class='avatar'/>
 							</a>
 						</div>
 					</md-card-title-media>
 				</md-card-title>
 			</md-card>
-		</md-content>
+		</div>
 	</div>
 </div>
 
@@ -50,27 +80,8 @@
 <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
 <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
 <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
   
-<script type="text/javascript">    
-
-    var app = angular.module('LeaderboardApp', ['ngMaterial']);
-
-    app.controller('leaderboardCtrl', function($scope, $http) {
-    	$scope.board = {};
-
-    	$scope.loadBoard = function() {
-    		var httpRequest = $http({
-    			method: 'GET',
-    			url: 'https://apis.trainheroic.com/public/leaderboard/468425'
-    		}).success(function (data, status) {
-    			$scope.board = data;
-    			console.log(data);
-    		});
-    	}
-
-    	$scope.loadBoard();
-    });
-</script>
-
+<script type="text/javascript" src='app.js'></script>
 </body>
 </html>
