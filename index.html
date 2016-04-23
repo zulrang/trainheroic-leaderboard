@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>TrainHeroic</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css"> -->
+
+    <link rel="stylesheet" href="http://gainz.trainheroic.com/styles/vendor-46108103.css">
+
+    <link rel="stylesheet" href="http://gainz.trainheroic.com/styles/app-578f83c8.css">
+
+</head>
+<body ng-app='LeaderboardApp' ng-cloak>
+
+<div ui-view>
+	<div layout="column" class='layout-column'>
+		<md-content ui-view='body' ng-controller='leaderboardCtrl' ng-model='board'>
+			<md-card layout='column' layout-align='start' class='workout-logging-header' >
+				<md-content class='session-info'>
+					<div layout="row" layout-align="space-between center" layout-padding="" layout-fill="" class="layout-fill layout-padding layout-align-space-between-center layout-row">
+						<div flex="" class="wolo-title flex">
+							<span class="date">{{board.date}}</span> 
+							<span class="name">{{board.workoutTitle}}</span>
+						</div>
+					</div>
+				</md-content>
+			</md-card>
+			<md-card layout='column' ng-repeat='result in board.results'>
+				<md-card-title>
+					<md-card-title-text>
+						<span class='md-headline'>{{result.userLastName}}, {{result.userFirstName}}</span>
+					</md-card-title-text>
+					<md-card-title-media>
+						<div class="md-media-sm card-media">
+							<a href='{{result.profileUrl}}'}}>
+							<img src='{{result.profileImg}}'/>
+							</a>
+						</div>
+					</md-card-title-media>
+				</md-card-title>
+			</md-card>
+		</md-content>
+	</div>
+</div>
+
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
+<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+  
+<script type="text/javascript">    
+
+    var app = angular.module('LeaderboardApp', ['ngMaterial']);
+
+    app.controller('leaderboardCtrl', function($scope, $http) {
+    	$scope.board = {};
+
+    	$scope.loadBoard = function() {
+    		var httpRequest = $http({
+    			method: 'GET',
+    			url: 'https://apis.trainheroic.com/public/leaderboard/468425'
+    		}).success(function (data, status) {
+    			$scope.board = data;
+    			console.log(data);
+    		});
+    	}
+
+    	$scope.loadBoard();
+    });
+</script>
+
+</body>
+</html>
