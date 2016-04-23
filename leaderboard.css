@@ -1,3 +1,19 @@
+.leader-section {
+	padding-top: 100px;
+}
+.th-wolo .workout-logging-header {
+	margin: 0;
+	z-index: 1000;
+	position: absolute;
+	width: 100%;
+}
+.session-info {
+	background-color: #1f242a !important;
+	color: #fff !important;
+}
+.leader { 
+	z-index: 0;
+}
 /* ensure avatar thumbnails are uniform size */
 .avatar { 
 	max-height: 80px; 

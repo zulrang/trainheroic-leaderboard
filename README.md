@@ -1,4 +1,4 @@
-trainheroic-leaderboard
+TrainHeroic Leaderboard
 =======================
 
 ## Description
@@ -23,3 +23,5 @@ You can adjust the delays by change the relevant variables in app.js
 
  * Cache images to fix occasional lag
  * Set up proper media queries to make heights more responsive
+ * Add header for workout information
+ * Create some fun stats at the bottom

@@ -14,34 +14,36 @@
 
 <div ui-view>
 	<div layout="column" class='layout-column' ng-if='!loading'>
-		<div ui-view='body' ng-controller='leaderboardCtrl' ng-model='board'>
+		<div ui-view='body' class='th-wolo' ng-controller='leaderboardCtrl' ng-model='board'>
 			<md-card layout='column' layout-align='start' class='workout-logging-header' >
 				<md-content class='session-info'>
 					<div layout="row" layout-align="space-between center" layout-padding="" layout-fill="" class="layout-fill layout-padding layout-align-space-between-center layout-row">
 						<div flex="" class="wolo-title flex">
-							<span class="date">{{board.date}}</span> 
-							<span class="name">{{board.workoutTitle}}</span>
+							<span class="date">{{boardData.date}}</span> 
+							<span class="name">{{boardData.workoutTitle}}</span>
 						</div>
 					</div>
 				</md-content>
 			</md-card>
-			<md-card class='leader' layout='column' ng-repeat='result in board'>
-				<md-card-title>
-					<md-card-title-media>
-						<h1>{{result.tests[0]}}</h1>
-					</md-card-title-media>
-					<md-card-title-text>
-						<span class='md-headline'>{{result.userLastName}}, {{result.userFirstName}}</span>
-					</md-card-title-text>
-					<md-card-title-media>
-						<div class="md-media-sm card-media">
-							<a href='{{result.profileUrl}}'}}>
-							<img ng-src='{{result.profileImg}}' class='avatar'/>
-							</a>
-						</div>
-					</md-card-title-media>
-				</md-card-title>
-			</md-card>
+			<div class='leader-section'>
+				<md-card class='leader' layout='column' ng-repeat='result in board'>
+					<md-card-title>
+						<md-card-title-media>
+							<h1>{{result.tests[0]}}</h1>
+						</md-card-title-media>
+						<md-card-title-text>
+							<span class='md-headline'>{{result.userLastName}}, {{result.userFirstName}}</span>
+						</md-card-title-text>
+						<md-card-title-media>
+							<div class="md-media-sm card-media">
+								<a href='{{result.profileUrl}}'}}>
+								<img ng-src='{{result.profileImg}}' class='avatar'/>
+								</a>
+							</div>
+						</md-card-title-media>
+					</md-card-title>
+				</md-card>
+			</div>
 		</div>
 	</div>
 </div>
