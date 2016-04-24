@@ -15,13 +15,15 @@ or in a directory symlinked into docroot.
 
 Open index.html.  Everything else takes care of itself automatically.
 
+The leaderboard is designed to be displayed in fullscreen on a 1080p display device (such as a gym TV).
+
 ## Configuration
 
 You can adjust the delays by change the relevant variables in app.js
 
 ## TODO
 
- * Cache images to fix occasional lag
+ * Cache avatar images to fix occasional lag
  * Set up proper media queries to make heights more responsive
- * Add header for workout information
- * Create some fun stats at the bottom
+ * Dynamically adjust number of leaders displayed based on screen size
+

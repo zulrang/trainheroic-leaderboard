@@ -7,6 +7,50 @@
 	position: absolute;
 	width: 100%;
 }
+.leaderboard-stats {
+	padding: 16px 8px;
+	font-size: 3em;
+}
+.leader-stat {
+	text-align: right;
+}
+.fixed-footer {
+	position: fixed;
+	height: 90px;
+	left: 0;
+	bottom: 0;
+}
+/* css for each leader panel - created by trial and error
+   since angualar material is lacking good docs */
+.leader-rank {
+	margin: 0;
+	margin-top: 8px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	padding: 30px;
+	font-size: 3.8em;
+	min-width: 150px;
+}
+.leader-name {
+	margin-left: 20px;
+	padding: 10px;
+	font-size: 3.8em;
+}
+.leader-results {
+	margin: 0;
+	margin-top: 8px;
+	font-size: 3.8em;
+	padding: 30px;
+	background-color: #0a96c8;
+	color: #fff;
+	min-width: 300px;
+	text-align: right;
+}
+/* make cards not have padding */
+md-card.leader md-card-title {
+	padding: 0;
+}
 .session-info {
 	background-color: #1f242a !important;
 	color: #fff !important;
@@ -16,6 +60,7 @@
 }
 /* ensure avatar thumbnails are uniform size */
 .avatar { 
+	margin: 24px 16px;
 	max-height: 80px; 
 	object-fit: cover;
 }

@@ -19,8 +19,7 @@
 				<md-content class='session-info'>
 					<div layout="row" layout-align="space-between center" layout-padding="" layout-fill="" class="layout-fill layout-padding layout-align-space-between-center layout-row">
 						<div flex="" class="wolo-title flex">
-							<span class="date">{{boardData.date}}</span> 
-							<span class="name">{{boardData.workoutTitle}}</span>
+							<h1>Leaderboard for {{boardData.workoutTitle}} - {{boardData.date}}</h1>
 						</div>
 					</div>
 				</md-content>
@@ -29,11 +28,8 @@
 				<md-card class='leader' layout='column' ng-repeat='result in board'>
 					<md-card-title>
 						<md-card-title-media>
-							<h1>{{result.tests[0]}}</h1>
+							<h1 class='leader-rank'>{{result.rank}} </h1>
 						</md-card-title-media>
-						<md-card-title-text>
-							<span class='md-headline'>{{result.userLastName}}, {{result.userFirstName}}</span>
-						</md-card-title-text>
 						<md-card-title-media>
 							<div class="md-media-sm card-media">
 								<a href='{{result.profileUrl}}'}}>
@@ -41,9 +37,25 @@
 								</a>
 							</div>
 						</md-card-title-media>
+						<md-card-title-text>
+							<h1 class='md-headline leader-name'>{{result.userLastName}}, {{result.userFirstName}}</h1>
+						</md-card-title-text>
+						<md-card-title-media>
+							<h1 class='leader-results'>{{result.tests[0]}}</h1>
+						</md-card-title-media>
 					</md-card-title>
 				</md-card>
 			</div>
+			<md-card layout='column' layout-align='start' class='workout-logging-header fixed-footer' >
+				<md-card-title class='session-info leaderboard-stats'>
+					<md-card-title-text>
+						Total Reps
+					</md-card-title-text>
+					<md-card-title-text class='leader-stat'>
+						2349
+					</md-card-title-text>
+				</md-card-title>
+			</md-card>
 		</div>
 	</div>
 </div>
