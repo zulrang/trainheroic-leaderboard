@@ -4,7 +4,7 @@
 
     app.controller('leaderboardCtrl', function($scope, $http, $interval, $timeout) {
     	$scope.board = [];
-    	$scope.boardData = [];
+    	$scope.boardData = {};
     	$scope.loading = true;
     	$scope.cursor = 0;
     	$scope.boardSize = 7;      // number of simultaneous leaders to show
@@ -50,7 +50,12 @@
     			url: 'https://apis.trainheroic.com/public/leaderboard/468425'
     		}).success(function (data, status) {
     			$scope.boardData = data;
+    			$scope.boardData.totalReps = 0;
     			$scope.loading = false;
+    			// calculate total reps
+    			angular.forEach(data.results, function(item, index) {
+    				$scope.boardData.totalReps += parseInt(item.tests[0]);
+    			});
     			// begin animating
     			$timeout($scope.addItem,0);
     			console.log(data);
